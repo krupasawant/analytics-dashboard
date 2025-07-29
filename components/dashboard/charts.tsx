@@ -24,7 +24,7 @@ const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7c7c'];
 export function Charts() {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <Card>
+      <Card className="transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg" >
         <CardHeader>
           <CardTitle>Revenue Overview</CardTitle>
         </CardHeader>
@@ -65,7 +65,7 @@ export function Charts() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
         <CardHeader>
           <CardTitle>User Growth</CardTitle>
         </CardHeader>
@@ -108,7 +108,7 @@ export function Charts() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
         <CardHeader>
           <CardTitle>User Growth Sources</CardTitle>
         </CardHeader>

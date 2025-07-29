@@ -237,7 +237,7 @@ const exportToPDF = () => {
         <div className="rounded-md border">
           <Table>
             <TableHeader>
-              <TableRow>
+              <TableRow  className="transition-colors duration-200 hover:bg-muted/70">
                 <TableHead>
                   <Button
                     variant="ghost"
@@ -275,7 +275,7 @@ const exportToPDF = () => {
             </TableHeader>
             <TableBody>
               {filteredAndSortedData.map((order) => (
-                <TableRow key={order.id} className="hover:bg-muted/50">
+                <TableRow key={order.id}  className="transition-colors duration-200 hover:bg-muted/70">
                   <TableCell className="font-medium">
                     {order.customer}
                   </TableCell>
