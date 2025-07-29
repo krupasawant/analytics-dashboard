@@ -81,7 +81,47 @@ export const tableData: TableData[] = [
     amount: 721,
     status: 'completed',
     date: '2024-01-11'
-  }
+  },
+  {
+    id: '6',
+    customer: "Emily Davis",
+    email: "emily@example.com",
+    amount: 455,
+    status: "pending",
+    date: "2024-01-09",
+  },
+  {
+    id: '7',
+    customer: "Michael Scott",
+    email: "michael@example.com",
+    amount: 690,
+    status: "completed",
+    date: "2024-01-08",
+  },
+  {
+    id: '8',
+    customer: "Olivia Taylor",
+    email: "olivia@example.com",
+    amount: 312,
+    status: "failed",
+    date: "2024-01-07",
+  },
+  {
+    id: '9',
+    customer: "David Miller",
+    email: "david@example.com",
+    amount: 785,
+    status: "completed",
+    date: "2024-01-06",
+  },
+  {
+    id: '10',
+    customer: "Sophia Anderson",
+    email: "sophia@example.com",
+    amount: 220,
+    status: "pending",
+    date: "2024-01-05",
+  },
 ];
 
 export const userGrowthSources: ChartData[] = [
