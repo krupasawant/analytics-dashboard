@@ -4,6 +4,8 @@ import React from 'react';
 import { Bell, Search, User, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { ModeToggle } from "@/components/mode-toggle";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -42,6 +44,8 @@ export function TopNav() {
             3
           </span>
         </Button>
+
+         <ModeToggle />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

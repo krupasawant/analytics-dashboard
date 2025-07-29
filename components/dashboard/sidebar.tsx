@@ -22,7 +22,6 @@ const navigation = [
   { name: 'Orders', href: '/orders', icon: ShoppingCart, current: false },
   { name: 'Products', href: '/products', icon: Package, current: false },
   { name: 'Customers', href: '/customers', icon: Users, current: false },
-  { name: 'Analytics', href: '/analytics', icon: BarChart3, current: false },
   { name: 'Revenue', href: '/revenue', icon: DollarSign, current: false },
   { name: 'Payments', href: '/payments', icon: CreditCard, current: false },
   { name: 'Settings', href: '/settings', icon: Settings, current: false },
