@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Table,
   TableBody,
@@ -17,11 +17,29 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { saveAs } from "file-saver";
+import Papa from "papaparse";
+
+import jsPDF from "jspdf";
+
+import "jspdf-autotable";
+
+import autoTable from "jspdf-autotable";
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { MoreHorizontal, Search, ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react';
+import { 
+  MoreHorizontal, 
+  Search, 
+  ArrowUpDown, 
+  ArrowUp, 
+  ArrowDown,
+  Download,
+  FileText
+} from 'lucide-react';
+
 import { tableData } from '@/lib/dummy-data';
 import { TableData } from '@/types/dashboard';
 
@@ -98,6 +116,40 @@ export function DataTable() {
       item.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Generate a random order
+const generateRandomOrder = (): TableData => {
+  const names = ["Liam", "Emma", "Noah", "Ava", "Ethan", "Isabella"];
+  const lastNames = ["Brown", "Clark", "Lee", "Walker", "Hall"];
+  const statuses = ["completed", "pending", "failed"] as const;
+  type Status = typeof statuses[number];
+
+  const randomName =
+    names[Math.floor(Math.random() * names.length)] +
+    " " +
+    lastNames[Math.floor(Math.random() * lastNames.length)];
+
+  return {
+    id: Date.now().toString(),
+    customer: randomName,
+    email: `${randomName.split(" ")[0].toLowerCase()}@example.com`,
+    amount: Math.floor(Math.random() * 900) + 100,
+    status: statuses[Math.floor(Math.random() * statuses.length)] as Status,
+    date: new Date().toISOString(),
+  };
+};
+
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setData((prevData) => {
+      return [generateRandomOrder(), ...prevData];
+    });
+  }, 10000); // every 10 seconds
+
+  return () => clearInterval(interval);
+}, []);
+
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -112,6 +164,34 @@ export function DataTable() {
       day: 'numeric',
     }).format(new Date(dateString));
   };
+
+const exportToCSV = () => {
+  const csv = Papa.unparse(filteredAndSortedData);
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  saveAs(blob, "table-data.csv");
+};
+
+const exportToPDF = () => {
+  const doc = new jsPDF();
+  const tableColumn = ["Customer", "Email", "Amount", "Status", "Date"];
+  const tableRows = filteredAndSortedData.map(row => [
+    row.customer,
+    row.email,
+    row.amount,
+    row.status,
+    row.date,
+  ]);
+
+  autoTable(doc, {
+    head: [tableColumn],
+    body: tableRows,
+  });
+
+  doc.save("table-data.pdf");
+};
+
+
+
 
   return (
     <Card>
@@ -133,6 +213,7 @@ export function DataTable() {
               variant="outline"
               size="sm"
               onClick={exportToCSV}
+              disabled={filteredAndSortedData.length === 0}
               className="flex items-center space-x-2"
             >
               <Download className="h-4 w-4" />
@@ -142,11 +223,13 @@ export function DataTable() {
               variant="outline"
               size="sm"
               onClick={exportToPDF}
+              disabled={filteredAndSortedData.length === 0}
               className="flex items-center space-x-2"
             >
-              <FileText className="h-4 w-4" />
-              <span>PDF</span>
-            </Button>
+            <FileText className="h-4 w-4" />
+            <span>PDF</span>
+          </Button>
+
           </div>
         </div>
       </CardHeader>
