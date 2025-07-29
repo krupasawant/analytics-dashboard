@@ -32,13 +32,34 @@ export const kpiData: KPIData[] = [
 ];
 
 export const chartData: ChartData[] = [
-  { name: 'Jan', revenue: 4000, users: 2400, orders: 240 },
-  { name: 'Feb', revenue: 3000, users: 1398, orders: 221 },
-  { name: 'Mar', revenue: 2000, users: 9800, orders: 229 },
-  { name: 'Apr', revenue: 2780, users: 3908, orders: 200 },
-  { name: 'May', revenue: 1890, users: 4800, orders: 218 },
-  { name: 'Jun', revenue: 2390, users: 3800, orders: 250 },
-  { name: 'Jul', revenue: 3490, users: 4300, orders: 210 }
+  {
+    name: 'Jan', revenue: 4000, users: 2400, orders: 240,
+    value: 0
+  },
+  {
+    name: 'Feb', revenue: 3000, users: 1398, orders: 221,
+    value: 0
+  },
+  {
+    name: 'Mar', revenue: 2000, users: 9800, orders: 229,
+    value: 0
+  },
+  {
+    name: 'Apr', revenue: 2780, users: 3908, orders: 200,
+    value: 0
+  },
+  {
+    name: 'May', revenue: 1890, users: 4800, orders: 218,
+    value: 0
+  },
+  {
+    name: 'Jun', revenue: 2390, users: 3800, orders: 250,
+    value: 0
+  },
+  {
+    name: 'Jul', revenue: 3490, users: 4300, orders: 210,
+    value: 0
+  }
 ];
 
 export const tableData: TableData[] = [
@@ -125,8 +146,8 @@ export const tableData: TableData[] = [
 ];
 
 export const userGrowthSources: ChartData[] = [
-  { name: 'Organic', value: 60, fill: '#8884d8' },
-  { name: 'Marketing', value: 25, fill: '#82ca9d' },
-  { name: 'Referrals', value: 10, fill: '#ffc658' },
-  { name: 'Social Media', value: 5, fill: '#ff7c7c' }
+  { name: 'Organic', value: 60},
+  { name: 'Marketing', value: 20},
+  { name: 'Referrals', value: 10 },
+  { name: 'Social Media', value: 5}
 ];
