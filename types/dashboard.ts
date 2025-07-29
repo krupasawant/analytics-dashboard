@@ -8,7 +8,7 @@ export interface KPIData {
 
 export interface ChartData {
   name: string;
-  value: number;
+  value?: number;
   revenue?: number;
   users?: number;
   orders?: number;
